@@ -26,52 +26,60 @@
   </ion-toolbar>
 
 </ion-header>
-<ion-content id="proximos-eventos-content">
+<ion-content>
 
   <div [ngSwitch]="opcao">
     <ion-list *ngSwitchCase="'competencias'">
       <span *ngIf="!contemProjetos()" class="text-info" ion-text color="primary">As competências
         cadastradas serão exibidos aqui.</span>
       <display-spinner [display]="carregandoCompetencias"></display-spinner>
-      <ion-item *ngFor="let item of competencias">
-        <ion-icon name="infinite" item-left> </ion-icon>
-        <h2>{{item.Sigla}} - {{item.Descricao}}</h2>
-      </ion-item>
-      <ion-fab right bottom>
-        <button (click)="adicionarCompetencia()" ion-fab color="primary">
-          <ion-icon name="add"></ion-icon>
-        </button>
-      </ion-fab>
+      <ion-item-sliding *ngFor="let item of competencias">
+        <ion-item>
+          <ion-icon name="infinite" item-left> </ion-icon>
+          <h2>{{item.Nome}}</h2>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button (click)="editarCompetencia(item)" color="light">Editar</button>
+          <button ion-button (click)="excluirCompetencia(item)" color="danger">Excluir</button>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
 
     <ion-list *ngSwitchCase="'abordagens'">
       <span *ngIf="!contemProjetos()" class="text-info" ion-text color="primary">As metodologias
         cadastradas serão exibidos aqui.</span>
       <display-spinner [display]="carregandoMetodologias"></display-spinner>
-      <ion-item *ngFor="let item of metodologias">
-        <ion-icon name="folder" item-left> </ion-icon>
-        <h2>{{item.Descricao}}</h2>
-      </ion-item>
-      <ion-fab right bottom>
-        <button (click)="adicionarMetodologia()" ion-fab color="primary">
-          <ion-icon name="add"></ion-icon>
-        </button>
-      </ion-fab>
+      <ion-item-sliding *ngFor="let item of metodologias">
+        <ion-item>
+          <ion-icon name="folder" item-left> </ion-icon>
+          <h2>{{item.Descricao}}</h2>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button (click)="editarMetodologia(item)" color="light">Editar</button>
+          <button ion-button (click)="excluirMEtodologia(item)" color="danger">Excluir</button>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
 
     <ion-list *ngSwitchCase="'projetos'">
       <span *ngIf="!contemProjetos()" class="text-info" ion-text color="primary">Os projetos
         cadastrados serão exibidos aqui.</span>
       <display-spinner [display]="carregandoProjetos"></display-spinner>
-        <ion-item *ngFor="let item of projetos">
+      <ion-item-sliding *ngFor="let item of projetos" #slidingItem>
+        <ion-item>
           <ion-icon name="folder" item-left></ion-icon>
           <h2>{{item.Nome}}</h2>
         </ion-item>
-        <ion-fab right bottom>
-          <button (click)="adicionarProjeto()" ion-fab color="primary">
-            <ion-icon name="add"></ion-icon>
-          </button>
-        </ion-fab>
+        <ion-item-options side="right">
+          <button ion-button (click)="editarProjeto(item, slidingItem)" color="light">Editar</button>
+          <button ion-button (click)="ecluirProjeto(item, slidingItem)" color="danger">Excluir</button>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
   </div>
+  <ion-fab right bottom>
+    <button (click)="adicionar()" ion-fab color="primary">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

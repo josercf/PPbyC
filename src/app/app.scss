@@ -54,8 +54,15 @@
   color:#444;
 }
 
+form .item-md {padding: 0;}
+form .item-md.item-block .item-inner {
+  padding-right: 0!important;
+  border-bottom: none!important;
+}
+
 .snn-select {max-width: 100%; padding: 27px 15px;}
-.snn-select  .select-placeholder{text-align: left;}
+.snn-select  .select-placeholder,
+.snn-select  .select-text{text-align: left;}
 
 .snn-cadastro-title {
   text-align:center;

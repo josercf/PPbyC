@@ -44,9 +44,15 @@ export class ProjetoCadastroPage {
     }
 
     ionViewDidLoad() {
+
         this.projetoModel = this.navParams.get('projeto');
-        if (this.projetoModel && this.projetoModel.Id && this.projetoModel.Id.length > 1) {
+        if (this.projetoModel && this.projetoModel.Id && this.projetoModel.Id.length > 0) {
             this.titulo = "Alterar Projeto";
+            this.projeto.controls.nome.setValue(this.projetoModel.Nome);
+            this.projeto.controls.sobre.setValue(this.projetoModel.Sobre);
+            this.projeto.controls.metodologia.setValue(this.projetoModel.MetodologiaId);
+            this.projeto.controls.prioridade.setValue(this.projetoModel.Prioridade);
+            this.prioridade = this.projetoModel.Prioridade;
         }
     }
 

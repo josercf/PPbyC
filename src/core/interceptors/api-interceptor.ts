@@ -8,8 +8,8 @@ import { catchError, mergeMap, finalize } from 'rxjs/operators';
 
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from "ionic-angular";
-const BASE_URL = "https://localhost:44310/";
-// const BASE_URL = "https://sonarday.azurewebsites.net/";
+//const BASE_URL = "https://localhost:44310/";
+const BASE_URL = "http://pocef.azurewebsites.net/";
 const erros: any = {
   401: "Não autorizado.",
   400: "Requisição inválida.",

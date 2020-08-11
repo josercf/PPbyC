@@ -86,6 +86,7 @@ export class ParametrosPage {
   }
 
   carregarProjetos() {
+
     this.projetoService.listar()
       .pipe(finalize(() => this.carregandoProjetos = false))
       .subscribe(projetos => this.projetos = projetos)
@@ -99,6 +100,11 @@ export class ParametrosPage {
 
   }
 
+  editarProjeto(projeto, slidingItem) {
+    slidingItem.close();
+    this.navCtrl.push(ProjetoCadastroPage, { projeto: projeto });
+  }
+
   detalheProjeto(projeto) {
     this.navCtrl.push(DetalheEventoPage, { evento: null, exibirLinkCompra: true });
   }
@@ -110,8 +116,26 @@ export class ParametrosPage {
     // modal.present();
   }
 
-  adicionarProjeto() {
-    this.navCtrl.push(ProjetoCadastroPage);
+  adicionar() {
+
+
+    switch (this.opcao) {
+      case 'competencias': {
+
+        break;
+      }
+      case 'abordagens': {
+
+        break;
+      }
+      default: {
+        this.navCtrl.push(ProjetoCadastroPage);
+        break;
+      }
+    }
+
+
+
   }
 
   contemCompetencias(): boolean {

@@ -17,7 +17,7 @@ export class CompetenciaService {
 
     listar(): Observable<Competencia[]> {
 
-        return this.webRequest.get(`${competencias_url}/listar/`, {}, { ajaxLoading: false })
+        return this.webRequest.get(`${competencias_url}/listar`, {}, { ajaxLoading: false })
             .pipe(map(response => response.data));
     }
 
