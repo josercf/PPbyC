@@ -1,0 +1,56 @@
+<ion-header id="header-proximos-eventos">
+  <ion-navbar>
+    <ion-grid class="sonar-header">
+      <ion-row>
+        <ion-col col-12>
+          <div class="sonar-home-logo">
+            <img responsive alt="logo" height="20" src="assets/imgs/logo.png">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar> 
+
+</ion-header>
+<ion-content id="proximos-eventos-content">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item-divider sticky id="proximos-eventos-divider">
+    <ion-title left>
+      Avaliar Abordagens
+    </ion-title>
+  </ion-item-divider>
+  <display-spinner [display]="carregandoEventos"></display-spinner>
+
+  <div [ngSwitch]="opcao">
+    <ion-list *ngSwitchCase="'competencias'">
+      <ion-item *ngFor="let item of competencias">
+        <ion-icon name="infinite" item-left> </ion-icon>
+        <h2>{{item.Sigla}} - {{item.Descricao}}</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'abordagens'">
+      <ion-item *ngFor="let item of metodologias">
+        <ion-icon name="infinite" item-left> </ion-icon>
+        <h2>{{item.Descricao}}</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'projetos'">
+      <span *ngIf="!contemProjetos() && eventosCarregados" class="text-info" ion-text color="primary">Os projetos cadastrados serão exibidos aqui.</span>
+      <ion-item *ngFor="let item of projetos">
+        <ion-icon name="folder"  item-left></ion-icon>
+        <h2>{{item.Nome}}</h2>
+      </ion-item>
+
+      <ion-item >
+        <button (click)="detalheProjeto()" full ion-button round color="primary">Novo Projeto</button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <span *ngIf="!contemCompetencias() && !contemMetodologias() && eventosCarregados" class="text-info" ion-text color="primary">Os dados serão exibidos aqui assim que atualizarmos os cadastros.</span>
+
+</ion-content>

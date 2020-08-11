@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title left>
+            Alocação
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="noticias-lista-content">
+    <display-spinner [display]="carregandoNoticias"></display-spinner>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <span *ngIf="!contemNoticias() && noticiasCarregadas" class="text-info" ion-text color="primary">As alocações estão disponíveis aqui.</span>
+
+     <ion-card class="noticias-lista-card" full-width (click)="detalhe(noticia)" *ngFor="let noticia of noticias">
+        <img src="{{noticia?.FotoGrande}}" />
+        <ion-card-content class="noticias-lista">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-9>
+                        <ion-card-title>
+                            <h2 ion-text color="primary"> {{noticia?.Titulo}}</h2>
+                        </ion-card-title>
+                        <p>
+                            {{noticia?.DescricaoCurta}}
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-12>
+                        <ion-note>
+                            {{obterDataCadastroFormatada(noticia?.DthCadastro)}}
+                        </ion-note>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-card-content>
+    </ion-card> 
+    <ion-infinite-scroll (ionInfinite)="scrollNoticias($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

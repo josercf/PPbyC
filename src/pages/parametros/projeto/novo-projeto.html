@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title left></ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+    <h2 class="snn-cadastro-title">Cria uma conta agora</h2>
+    <form [formGroup]="projeto">
+
+        <ion-input class="snn-login-input" placeholder="Seu nome completo" formControlName="nome" type="text" value="">
+        </ion-input>
+
+        <display-validation [form]="projeto" [messages]="validation_messages" field="nome"></display-validation>
+        <ion-input class="snn-login-input" placeholder="Seu e-mail" formControlName="email" type="text" value="">
+        </ion-input>
+
+        <display-validation [form]="projeto" [messages]="validation_messages" field="email"></display-validation>
+        <ion-input class="snn-login-input" placeholder="Insira uma senha" maxlength="10" formControlName="password"
+            type="password"></ion-input>
+
+        <display-validation [form]="projeto" [messages]="validation_messages" field="password"></display-validation>
+        <ion-input class="snn-login-input" placeholder="Confirme sua senha" maxlength="10"
+            formControlName="confirmPassword" type="password"></ion-input>
+
+        <display-validation [form]="projeto" [messages]="validation_messages" field="confirmPassword">
+        </display-validation>
+        <button [disabled]="!projeto.valid" class="snn-login-cadastro-button" (click)="cadastrar()">Cadastrar</button>
+    </form>
+
+    <div class="snn-login-cadastro" (click)="login()">Já tem cadastro?</div>
+
+</ion-content>

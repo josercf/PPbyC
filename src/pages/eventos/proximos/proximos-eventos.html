@@ -1,0 +1,36 @@
+<ion-header id="header-proximos-eventos">
+  <ion-navbar>
+    <ion-grid class="sonar-header">
+      <ion-row>
+        <ion-col col-12>
+          <div class="sonar-home-logo">
+            <img responsive alt="logo" height="20" src="assets/imgs/logo.png">
+          </div>
+        </ion-col>
+        <ion-col col-4>
+          <ion-item class="sonar-profile" (click)="perfilModal()">
+            <ion-avatar item-start>
+              <ion-icon *ngIf="!jwt?.userPicture" name="contact" color="light" header-avatar class="avatar"></ion-icon>
+              <img *ngIf="jwt?.userPicture" [src]="jwt?.userPicture">
+            </ion-avatar>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+<ion-content id="proximos-eventos-content">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item-divider sticky id="proximos-eventos-divider">
+    <ion-title left>
+      PPbyC - Alcides
+    </ion-title>
+  </ion-item-divider>
+  <display-spinner [display]="carregandoEventos"></display-spinner>
+  <span *ngIf="!contemEventos() && eventosCarregados" class="text-info" ion-text color="primary">Colocar descrição para apresentação do trabalho aqui</span>
+  <!-- <ion-list>
+    <app-lista-eventos *ngIf="contemEventos()" [eventos]="proximosEventos" (obterEventos)="paginarEventos($event)" (detalhe)="detalhe($event)"></app-lista-eventos>
+  </ion-list> -->
+</ion-content>

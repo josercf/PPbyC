@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="nivel-header">
+        <ion-buttons left>
+            <button (click)="close()" ion-button icon-only>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+ 
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-grid>
+                <ion-row *ngFor="let contato of contatos">
+                    <ion-col col-2>
+                        <ion-avatar item-left>
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col col-8>
+                        <ion-row>
+                            <ion-col text-wrap>{{contato.nome}}</ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-item>
+
+    </ion-list>
+    <ion-fab right bottom>
+        <button (click)="adicionar()" ion-fab color="primary"><ion-icon name="qr-scanner"></ion-icon></button>
+    </ion-fab>
+</ion-content>

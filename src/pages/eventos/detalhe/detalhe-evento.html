@@ -1,0 +1,67 @@
+<ion-header>
+   <ion-navbar>
+        <ion-title left>
+          
+        </ion-title>
+          <ion-buttons right>
+            <button ion-button icon-only (click)="regularShare()">
+                <ion-icon name="share"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <img full-width src="{{evento?.FotoGrande}}" />
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+
+                <h2 ion-text color="primary"> {{evento?.Nome}}</h2>
+
+                <p ion-text class="detalhe-evento-text" [innerHtml]="evento?.Descricao">
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-note>
+                    <span ion-text color="primary"> {{obterDataEvento(evento)}} - {{obterHorarioEvento(evento)}}</span>
+                </ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-note>
+                    <span ion-text> 
+                    {{evento?.NomeEndereco}}
+                    </span>
+                </ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-note>
+                    <span ion-text> 
+                    {{evento?.Rua}}
+                     </span>
+                </ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-note>
+                    <span ion-text> 
+                    {{evento?.Cidade}}, {{evento?.Estado}}
+                     </span>
+                </ion-note>
+            </ion-col>
+        </ion-row>
+
+        <div *ngIf="exibirLinkCompra">
+            <button full ion-button color="primary" class="detalhe-evento-button" (click)="navegarParaLetsEvents(evento)">Ingressos</button>
+        </div>
+
+
+    </ion-grid>
+
+</ion-content>

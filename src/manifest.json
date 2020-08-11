@@ -1,0 +1,13 @@
+{
+  "name": "PPbyC",
+  "short_name": "Ionic",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/imgs/logo-maior.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#663300",
+  "theme_color": "#663300"
+}

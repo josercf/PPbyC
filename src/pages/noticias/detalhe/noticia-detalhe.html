@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title left>
+
+        </ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only (click)="regularShare()">
+                <ion-icon name="share"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+
+    <img full-width src="{{noticia?.FotoGrande}}" />
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+                <ion-note>
+                    {{obterDataCadastroFormatada(noticia?.DthCadastro)}}
+                </ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <h2 ion-text color="primary"> {{noticia?.Titulo}}</h2>
+                <p [innerHtml]="noticia?.Descricao">
+                </p>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+</ion-content>

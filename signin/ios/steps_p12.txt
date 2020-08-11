@@ -1,0 +1,10 @@
+
+set OPENSSL_CONF=C:\Program Files\OpenSSL\bin\openssl.cfg
+
+openssl genrsa -out ios_private.key 2048
+
+openssl req -new -key ios_private.key -out CertificateSigningRequest.certSigningRequest -subj "/emailAddress=amagno@sonarday.com, CN=Alexandre Papachristodoulou, C=BR"
+
+openssl x509 -in ios_distribution.cer -inform DER -out ios_distribution.pem -outform PEM
+
+openssl pkcs12 -export -inkey ios_private.key -in ios_distribution.pem -out ios_distribution.p12

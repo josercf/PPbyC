@@ -1,0 +1,32 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "signin/android/sonar_key.keystore",
+      "storePassword": "!Sonar123",
+      "alias": "sonar_key",
+      "password": "!Sonar123",
+      "keystoreType": ""
+    },
+    "release": {
+      "keystore": "signin/android/sonar_key.keystore",
+      "storePassword": "!Sonar123",
+      "alias": "sonar_key",
+      "password": "!Sonar123",
+      "keystoreType": ""
+    }
+  },
+  "ios": {
+    "debug": {
+      "developmentTeam": "KXQF2ZWXZ8",
+      "codeSignIdentity": "iPhone Developer: Alexandre Papachristodoulou (727TA7RPS8)",
+      "provisioningProfile": "prov.profile.sonar.devlopment",
+      "packageType": "development"
+    },
+    "release": {
+      "developmentTeam": "KXQF2ZWXZ8",
+      "codeSignIdentity": "iPhone Distribution: Alexandre Papachristodoulou (KXQF2ZWXZ8)",
+      "provisioningProfile": "prov.profile.sonar.distribution",
+      "packageType": "app-store"
+    }
+  }
+}

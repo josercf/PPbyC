@@ -1,0 +1,19 @@
+<ion-content class="snn-wrapper">
+  <div class="snn-logo">
+    <img src="/assets/imgs/logo-maior.png" alt="Logo da Sonar em branco">
+  </div>
+
+  <div class="snn-header" *ngIf="showHome">
+    <h3 class="snn-header-title">Título</h3>
+    <p class="snn-header-text">
+      BBbyC <br> Alcides.
+    </p>
+  </div>
+
+
+  <div *ngIf="showHome" class="snn-button-entrar" (click)="login()">Entrar</div>
+  <div *ngIf="showHome" class="snn-button-cadastro" (click)="cadastro()">Não tem cadastro?</div>
+
+  <!-- <div class="snn-circle"></div> -->
+
+</ion-content>

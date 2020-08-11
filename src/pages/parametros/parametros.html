@@ -1,0 +1,179 @@
+<ion-header id="header-proximos-eventos">
+  <ion-navbar>
+    <ion-grid class="sonar-header">
+      <ion-row>
+        <ion-col col-12>
+          <div class="sonar-home-logo">
+            <img responsive alt="logo" height="20" src="assets/imgs/logo.png">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="opcao">
+      <ion-segment-button value="competencias">
+        Competências
+      </ion-segment-button>
+      <ion-segment-button value="abordagens">
+        Abordagens
+      </ion-segment-button>
+      <ion-segment-button value="projetos">
+        Projetos
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content id="proximos-eventos-content">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item-divider sticky id="proximos-eventos-divider">
+    <ion-title left>
+      Parâmetros
+    </ion-title>
+  </ion-item-divider>
+  <display-spinner [display]="carregandoEventos"></display-spinner>
+
+  <div [ngSwitch]="opcao">
+    <ion-list *ngSwitchCase="'competencias'">
+      <ion-item *ngFor="let item of competencias">
+        <ion-icon name="infinite" item-left> </ion-icon>
+        <h2>{{item.Sigla}} - {{item.Descricao}}</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'abordagens'">
+      <ion-item *ngFor="let item of metodologias">
+        <ion-icon name="infinite" item-left> </ion-icon>
+        <h2>{{item.Descricao}}</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'projetos'">
+      <span *ngIf="!contemProjetos() && eventosCarregados" class="text-info" ion-text color="primary">Os projetos cadastrados serão exibidos aqui.</span>
+      <ion-item *ngFor="let item of projetos">
+        <ion-icon name="folder"  item-left></ion-icon>
+        <h2>{{item.Nome}}</h2>
+      </ion-item>
+
+      <ion-item >
+        <button (click)="detalheProjeto()" full ion-button round color="primary">Novo Projeto</button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <span *ngIf="!contemCompetencias() && !contemMetodologias() && eventosCarregados" class="text-info" ion-text color="primary">Os dados serão exibidos aqui assim que atualizarmos os cadastros.</span>
+  <!-- <ion-list>
+    <app-lista-eventos *ngIf="contemEventos()" [eventos]="proximosEventos" (obterEventos)="paginarEventos($event)" (detalhe)="detalhe($event)"></app-lista-eventos>
+  </ion-list> -->
+</ion-content>
+
+<!-- <ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      Segments
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="puppies">
+        Puppies
+      </ion-segment-button>
+      <ion-segment-button value="kittens">
+        Kittens
+      </ion-segment-button>
+      <ion-segment-button value="ducklings">
+        Ducklings
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'puppies'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-puppy-1.jpg">
+        </ion-thumbnail>
+        <h2>Ruby</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-puppy-2.jpg">
+        </ion-thumbnail>
+        <h2>Oscar</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-puppy-4.jpg">
+        </ion-thumbnail>
+        <h2>Zoey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-puppy-3.jpg">
+        </ion-thumbnail>
+        <h2>Otto</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-3.jpg">
+        </ion-thumbnail>
+        <h2>Milo</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-4.jpg">
+        </ion-thumbnail>
+        <h2>Bandit</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-2.jpg">
+        </ion-thumbnail>
+        <h2>Nala</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'ducklings'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-1.jpg">
+        </ion-thumbnail>
+        <h2>Daffy</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-2.jpg">
+        </ion-thumbnail>
+        <h2>Huey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-3.jpg">
+        </ion-thumbnail>
+        <h2>Dewey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-4.jpg">
+        </ion-thumbnail>
+        <h2>Louie</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content> -->

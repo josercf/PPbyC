@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title left>
+            Ranking
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <span *ngIf="!contemRanking() && rankingCarregado" class="text-info" ion-text color="primary">Ainda estamos processando as pontuações.</span>
+    <display-spinner [display]="carregandoRanking"></display-spinner>
+    <ion-list *ngIf="contemRanking()">
+        <ion-item>
+            <ion-grid class="ranking">
+                <ion-row *ngFor="let item of ranking; let i = index" class="item-ranking" (click)="perfil(item)">
+                    <ion-col col-1>
+                        <ion-fab>
+                            <button mini ion-fab>{{i + 1}}</button>
+                        </ion-fab>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-avatar item-left>
+                            <img *ngIf="item.Avatar" [src]="item.Avatar">
+                            <ion-icon *ngIf="!item.Avatar" name="contact" avatar color="light" class="avatar"></ion-icon>
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col col-7>
+                        <ion-row>
+                            <ion-col text-wrap>
+                                {{item.Nome}}
+                                <!-- <small>{{usuario.comentario}}</small> -->
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-col>
+                    <ion-col col-2 class="item-pontuacao">
+                        {{item.Pontuacao}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-item>
+
+    </ion-list>
+</ion-content>

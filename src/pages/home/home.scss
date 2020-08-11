@@ -1,0 +1,67 @@
+page-home {
+
+}
+ion-header .item-ios,
+ion-header .item-md {
+  background: transparent;
+}
+ion-header .item-ios .item-inner,
+ion-header .item-md .item-inner { border: none;}
+
+
+
+
+
+.snn-wrapper {
+  background:url('./../../assets/imgs/login-background.png') no-repeat;
+  background-size:cover;
+  height:100vh;
+  color:#fff;
+  margin:0 auto;
+  text-align: center;
+}
+
+
+.snn-circle {
+ background:url('./../../assets/imgs/circles.svg') no-repeat;
+ width:100vh;
+ height:100vh;
+ position:absolute;
+ top:50px;
+ left:-29px;
+ z-index:0;
+}
+
+.snn-logo {
+  padding:9rem 0 5rem 0;
+}
+.snn-button-entrar {
+  background:#011627;
+  color:#fff;
+  text-transform:uppercase;
+  padding:2.3rem;
+  border-radius:100px;
+  font-size:1.5em;
+  margin:15px;
+  z-index:1;
+  position:relative;
+}
+
+.snn-header-title {
+  font-size:1.8em;
+}
+
+.snn-header-text {
+  font-size:1.4em;
+  line-height:1.4em;
+  margin-bottom:6rem;
+
+}
+
+
+.snn-button-cadastro {
+  font-size:1.4em;
+  margin:2rem;
+  z-index:1;
+  position:relative;
+}

@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons left>
+            <button (click)="close()" ion-button icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <p ion-text>Informe abaixo o código que você recebeu por e-mail.</p>
+    <form [formGroup]="pontuacao">
+
+            <display-validation [form]="pontuacao" [messages]="validation_messages" field="codigo"></display-validation>
+
+            <ion-input class="snn-login-input" placeholder="Informe o código" type="text"  maxlength="6" value="" formControlName="codigo"></ion-input>
+
+            <ion-input class="snn-login-input" placeholder="Informe seu e-mail" type="text" [value]="jwt?.email" formControlName="email"></ion-input>
+
+        <display-validation [form]="pontuacao" [messages]="validation_messages" field="email"></display-validation>
+        <button [disabled]="!pontuacao.valid" full ion-button round color="primary" (click)="resgatar()">Resgatar</button>
+    </form>
+</ion-content>

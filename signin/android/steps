@@ -1,0 +1,18 @@
+#Build
+ionic cordova build android --release -- -- --versionCode=6
+
+#Gerar Chave APK
+
+keytool -genkey -v -keystore sonar_key.keystore -alias sonar_key -keyalg RSA -keysize 2048 -validity 10000
+
+#Encontrar ALIAS
+
+keytool -keystore app-release-key.keystore -list -v
+
+#Assinar APK
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore sonar_key.keystore app-release-unsigned.apk sonar_key 
+
+#Zipar APK
+
+zipalign -v 4 app-release-unsigned.apk SonarApp.apk

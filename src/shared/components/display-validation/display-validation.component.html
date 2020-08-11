@@ -1,0 +1,7 @@
+<div class="validation-error" *ngIf="messages">
+    <ng-container *ngFor="let validation of messages[field]">
+        <div *ngIf="form.get(field).hasError(validation.type) && form.get(field).value">
+            <label ion-text color="danger">{{validation?.message}}</label>
+        </div>
+    </ng-container>
+</div>

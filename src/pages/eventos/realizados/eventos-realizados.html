@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title left>
+      Eventos realizados
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <span *ngIf="!contemEventos() && eventosCarregados" class="text-info" ion-text color="primary">Os eventos realizados serão exibidos aqui assim que atualizarmos nossa agenda.</span>
+  <ion-list *ngIf="contemEventos()">
+    <display-spinner [display]="carregandoEventos"></display-spinner>
+    <app-lista-eventos [eventos]="eventosRealizados" (obterEventos)="paginarEventos($event)" (detalhe)="detalhe($event)"></app-lista-eventos>
+  </ion-list>
+</ion-content>
