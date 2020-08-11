@@ -101,7 +101,7 @@ export class LoginPage {
                     message = result.Message;
                 }
                 let alert = this.alertCtrl.create({
-                    title: "Sonar",
+                    title: "BBbyC",
                     message: message,
                     buttons: ['OK']
                 });

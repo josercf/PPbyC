@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.sonar.team.app" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Sonar</name>
-    <description>Sonar Eventos.</description>
+<widget id="io.BBbyC.team.app" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>BBbyC</name>
+    <description>BBbyC Eventos.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -82,7 +82,7 @@
     </platform>
     <plugin name="cordova-plugin-facebook4" spec="^4.2.1">
         <variable name="APP_ID" value="2224658351139317" />
-        <variable name="APP_NAME" value="Sonar" />
+        <variable name="APP_NAME" value="BBbyC" />
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
     </plugin>

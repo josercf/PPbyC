@@ -9,11 +9,7 @@ export class LoadingService {
 
     presentWithGif() {
         this.loading = this.loadingCtrl.create({
-            spinner: 'hide',
-            content: `
-          <div class="custom-spinner-container">
-            <img src="assets/imgs/Preloader.gif" />
-          </div>`
+            spinner: 'dots'
         });
 
         return this.loading.present();

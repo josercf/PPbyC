@@ -64,7 +64,7 @@ export class APIInterceptor implements HttpInterceptor {
 
   private alert(message) {
     let alert = this.alertCtrl.create({
-      title: "Sonar",
+      title: "BBbyC",
       message: message,
       buttons: ['OK']
     });

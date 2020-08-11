@@ -1,14 +1,14 @@
 <ion-header id="header-proximos-eventos">
   <ion-navbar>
-    <ion-grid class="sonar-header">
+    <ion-grid class="BBbyC-header">
       <ion-row>
         <ion-col col-12>
-          <div class="sonar-home-logo">
+          <div class="BBbyC-home-logo">
             <img responsive alt="logo" height="20" src="assets/imgs/logo.png">
           </div>
         </ion-col>
         <ion-col col-4>
-          <ion-item class="sonar-profile" (click)="perfilModal()">
+          <ion-item class="BBbyC-profile" (click)="perfilModal()">
             <ion-avatar item-start>
               <ion-icon *ngIf="!jwt?.userPicture" name="contact" color="light" header-avatar class="avatar"></ion-icon>
               <img *ngIf="jwt?.userPicture" [src]="jwt?.userPicture">

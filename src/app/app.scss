@@ -119,7 +119,7 @@
   line-height:1.5em;
 }
 
-.sonar-btn {
+.BBbyC-btn {
   height:3.8em!important;
   margin:0!important;
 }
@@ -129,7 +129,7 @@
   padding:0!important;
 }
 
-.sonar-inscrever {
+.BBbyC-inscrever {
   background:#000!important;
   color:#fff;
 }
@@ -176,7 +176,7 @@ padding-top: 50%;
 }
 
 
-.sonar-rounded-element {
+.BBbyC-rounded-element {
   -webkit-border-bottom-right-radius: 100px;
   -moz-border-radius-bottomright: 100px;
   border-bottom-right-radius: 100px;
@@ -198,7 +198,7 @@ padding-top: 50%;
   padding:280px 30px 20px;
 }
 
-.sonar-text {
+.BBbyC-text {
   font-size:1.3em;
 }
 page-home [logo]{
@@ -3980,7 +3980,7 @@ display-spinner{
 }
 
 
-ion-item.sonar-profile{
+ion-item.BBbyC-profile{
   background: none;
   width: auto;
   position: absolute;
@@ -3989,10 +3989,10 @@ ion-item.sonar-profile{
 }
 
 
-ion-item.sonar-profile ion-avatar{
+ion-item.BBbyC-profile ion-avatar{
   margin: 0!important;
 }
-ion-item.sonar-profile img{
+ion-item.BBbyC-profile img{
   width: 35px;
   height: 35px;
 }
@@ -4002,11 +4002,11 @@ img[responsive]{
   height: auto;
 }
 
-.sonar-home-logo{
+.BBbyC-home-logo{
   margin: auto auto;
 }
 
-.sonar-header {
+.BBbyC-header {
   padding:0;
 }
 
@@ -4017,7 +4017,11 @@ img[responsive]{
 .platform-android4_4 .evento-item-group,
 .platform-android6 .evento-item-group ion-item-divider[sticky] {top:0!important; z-index: 98;}
 
-.loading-wrapper {padding: 0!important; background: transparent!important;}
+.loading-wrapper {
+  padding: 0 !important;
+  background: none!important;
+  box-shadow: none!important;
+}
 .custom-spinner-container {width: 100%; height: 100%; background: #fff;}
 .custom-spinner-container,
 .custom-spinner-container img {

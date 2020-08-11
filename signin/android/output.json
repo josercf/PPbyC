@@ -1,1 +1,1 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":5},"path":"app-release-unsigned.apk","properties":{"packageId":"io.sonar.team.app","split":"","minSdkVersion":"19"}}]
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":5},"path":"app-release-unsigned.apk","properties":{"packageId":"io.BBbyC.team.app","split":"","minSdkVersion":"19"}}]
