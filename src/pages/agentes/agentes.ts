@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, IonicPage } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { EventoService, AuthService } from "../../core/services";
-import { DetalheEventoPage } from  "../eventos/detalhe/detalhe-evento";
+import { DetalheEventoPage } from "../eventos/detalhe/detalhe-evento";
 import { NivelPage } from "../eventos/nivel/nivel";
 import { Observable } from 'rxjs/Observable';
 import { RefreshService } from "../../core/services/refresh-service";
@@ -39,12 +39,13 @@ export class AgentesPage {
   competencias: Competencia[];
   metodologias: Metodologia[];
   projetos: Projeto[];
+  agentes: any[] = [];
 
 
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
-    public eventoService: EventoService,    
+    public eventoService: EventoService,
     public pontuacaoService: PontuacaoService,
     public refreshService: RefreshService,
     private authService: AuthService,
@@ -73,6 +74,11 @@ export class AgentesPage {
         this.jwt = identity.getJwtData();
       }
     });
+
+    for (let i = 1; i < 30; i++) {
+      this.agentes.push({ Nome: `Camila Freitas Nonato` });
+    }
+
   }
   carregarPontuacoes() {
     this.carregandoPontuacao = true;
@@ -82,22 +88,22 @@ export class AgentesPage {
   }
 
 
-  carregarCompetencias(){
+  carregarCompetencias() {
     this.competenciaService.listar()
-    .pipe(finalize(() =>  this.carregandoPontuacao = false))
-    .subscribe(competencias => this.competencias = competencias)
+      .pipe(finalize(() => this.carregandoPontuacao = false))
+      .subscribe(competencias => this.competencias = competencias)
   }
 
-  carregarMetodologias(){
+  carregarMetodologias() {
     this.metodologiaService.listar()
-    .pipe(finalize(() =>  this.carregandoPontuacao = false))
-    .subscribe(metodologias => this.metodologias = metodologias)
+      .pipe(finalize(() => this.carregandoPontuacao = false))
+      .subscribe(metodologias => this.metodologias = metodologias)
   }
 
-  carregarProjetos(){
+  carregarProjetos() {
     this.projetoService.listar()
-    .pipe(finalize(() =>  this.carregandoPontuacao = false))
-    .subscribe(projetos => this.projetos = projetos)
+      .pipe(finalize(() => this.carregandoPontuacao = false))
+      .subscribe(projetos => this.projetos = projetos)
   }
 
 
@@ -127,7 +133,7 @@ export class AgentesPage {
 
   }
 
-  detalheProjeto(projeto){
+  detalheProjeto(projeto) {
     this.navCtrl.push(DetalheEventoPage, { evento: null, exibirLinkCompra: true });
   }
 
