@@ -13,7 +13,6 @@ ion-header .item-md .item-inner { border: none;}
 
 
 .snn-wrapper {
-  background:url('./../../assets/imgs/login-background.png') no-repeat;
   background-size:cover;
   height:100vh;
   color:#fff;
@@ -36,7 +35,7 @@ ion-header .item-md .item-inner { border: none;}
   padding:9rem 0 5rem 0;
 }
 .snn-button-entrar {
-  background:#011627;
+  background:#663300;
   color:#fff;
   text-transform:uppercase;
   padding:2.3rem;
@@ -46,7 +45,9 @@ ion-header .item-md .item-inner { border: none;}
   z-index:1;
   position:relative;
 }
-
+.snn-header{
+  color:#663300;
+}
 .snn-header-title {
   font-size:1.8em;
 }
@@ -64,4 +65,5 @@ ion-header .item-md .item-inner { border: none;}
   margin:2rem;
   z-index:1;
   position:relative;
+  color:#000;
 }

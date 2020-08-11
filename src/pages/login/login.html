@@ -9,13 +9,13 @@
 <ion-content padding>
 
     <h2 class="snn-cadastro-title">Entrar</h2>
-    <div class="snn-facebook" (click)="loginFacebook();">
+    <!-- <div class="snn-facebook" (click)="loginFacebook();">
         <img src="/assets/imgs/facebook-button.svg" alt="">
     </div>
 
     <div class="snn-item-option">
         <img src="/assets/imgs/item-ou.svg" alt="">
-    </div>
+    </div> -->
 
 
     <form [formGroup]="user">
@@ -28,18 +28,11 @@
 
         <ion-input class="snn-login-input" placeholder="Senha" maxlength="10" type="password" formControlName="password"></ion-input>
 
-
-
-
-
-
-        <div class="snn-login-entrar">
+        <div class="snn-login-entrar" color="primary" >
             <button [disabled]="!user.valid" class="snn-login-entrar-button" (click)="login();">Entrar</button>
         </div>
 
-
-        <div class="snn-login-cadastro" (click)="cadastro()">Não tem cadastro?</div>
-
+       <div class="snn-login-cadastro" (click)="cadastro()">Não tem cadastro?</div>
 
     </form>
 </ion-content>
