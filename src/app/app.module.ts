@@ -26,6 +26,8 @@ import { PontuacaoPageModule } from "../pages/pontuacao/pontuacao.module";
 import { FornecedoresPageModule } from "../pages/fornecedores/fornecedores.module";
 import { PerfilVisualizarPageModule } from "../pages/perfil-visualizar/perfil-visualziar.module";
 import { ParametrosPageModule } from '../pages/parametros/parametros.module';
+import { AbordagensPageModule } from '../pages/abordagens/abordagens.module';
+import { AgentesPageModule } from '../pages/agentes/agentes.module';
 
 @NgModule({
   declarations: [
@@ -49,8 +51,9 @@ import { ParametrosPageModule } from '../pages/parametros/parametros.module';
     PontuacaoPageModule,
     FornecedoresPageModule,
     NoticiaDetalhePageModule,
-
     ParametrosPageModule,
+    AbordagensPageModule,
+    AgentesPageModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       iconMode: 'md',

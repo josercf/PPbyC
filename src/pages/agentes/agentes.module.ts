@@ -31,4 +31,4 @@ import { AgentesPage } from './agentes';
       ProjetoService]
 
 })
-export class ParametrosPageModule { }
+export class AgentesPageModule { }

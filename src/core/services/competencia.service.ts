@@ -21,11 +21,6 @@ export class CompetenciaService {
             .pipe(map(response => response.data));
     }
 
-    // obterRealizados(qtd): Observable<Evento[]> {
-
-    //     return this.webRequest.get(`${eventos_url}/ObterRealizados/${qtd}`, {}, { ajaxLoading: false })
-    //         .pipe(map(response => response.data));
-    // }
 
    getById(id): Observable<Competencia> {
 
