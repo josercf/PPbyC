@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title left>
+           Avaliar Agente
+        </ion-title>
+
+    </ion-navbar>
+</ion-header>
+<ion-content bottom-space>
+    <ion-list>
+        <ion-item-divider sticky>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-2>
+                        <ion-avatar item-left>
+                            <ion-icon *ngIf="!jwt?.userPicture" name="contact" profile-avatar color="light"
+                                class="avatar"></ion-icon>
+                            <img *ngIf="jwt?.userPicture" [src]="jwt?.userPicture">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col col-10>
+                        <ion-row>
+                            <ion-col>
+                                <strong class="profile-name" ion-text text-wrap color="dark">{{agente?.Nome}}</strong>
+                                <br>
+                                <small>{{agente?.Cargo}}</small>
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item-divider>
+    </ion-list>
+    <ion-card *ngFor="let item of competencias">
+        <ion-card-header>
+            <h2 ion-text text-wrap color="primary">{{item.Nome}}</h2>
+        </ion-card-header>
+        <ion-card-content>
+            <p ion-text text-wrap>{{item.Descricao}}</p>
+            <ion-item>
+                <ion-label>Avaliação</ion-label>
+                <ion-select [(ngModel)]="gender" interface="action-sheet">
+                    <ion-option [value]="variavel.Id" *ngFor="let variavel of variaveis"> {{variavel.Nome}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+        </ion-card-content>
+    </ion-card>
+
+    <ion-fab right bottom>
+        <button ion-fab color="primary" (click)="registrar()">
+            <ion-icon name="checkmark"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

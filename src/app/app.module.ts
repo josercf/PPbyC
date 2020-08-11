@@ -29,6 +29,7 @@ import { ParametrosPageModule } from '../pages/parametros/parametros.module';
 import { AbordagensPageModule } from '../pages/abordagens/abordagens.module';
 import { AgentesPageModule } from '../pages/agentes/agentes.module';
 import { ProjetoCadastroPageModule } from '../pages/projeto-cadastro/projeto-cadastro.module';
+import { AgenteAvaliacaoPageModule } from '../pages/agente-avaliacao/agente-avaliacao.module';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ProjetoCadastroPageModule } from '../pages/projeto-cadastro/projeto-cad
     AbordagensPageModule,
     AgentesPageModule,
     ProjetoCadastroPageModule,
+    AgenteAvaliacaoPageModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       iconMode: 'md',

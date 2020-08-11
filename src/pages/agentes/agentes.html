@@ -12,11 +12,11 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content>
+<ion-content bottom-space>
   <ion-list>
     <ion-item>
       <ion-grid>
-        <ion-row *ngFor="let agente of agentes">
+        <ion-row *ngFor="let agente of agentes" (click)="avaliacao(agente)">
           <ion-col col-2>
             <ion-avatar item-left>
               <img
@@ -27,6 +27,9 @@
             <ion-row>
               <ion-col text-wrap>{{agente.Nome}}</ion-col>
             </ion-row>
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon float-right name="arrow-forward" color="light"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>

@@ -16,6 +16,7 @@ import { MetodologiaService } from '../../core/services/metodologia.service';
 import { Metodologia } from '../../core/models/metodologia';
 import { Projeto } from '../../core/models/projeto';
 import { ProjetoService } from '../../core/services/projeto.service';
+import { AgenteAvaliacaoPage } from '../agente-avaliacao/agente-avaliacao';
 
 const QTD_EVENTOS_POR_VEZ = 10;
 
@@ -57,7 +58,6 @@ export class AgentesPage {
 
   ionViewDidLoad() {
 
-    this.paginarEventos(null);
     this.carregarPontuacoes();
 
     this.carregarCompetencias();
@@ -76,7 +76,7 @@ export class AgentesPage {
     });
 
     for (let i = 1; i < 30; i++) {
-      this.agentes.push({ Nome: `Camila Freitas Nonato` });
+      this.agentes.push({ Nome: `Camila Freitas Nonato`, Cargo: "Gerente Sênior" });
     }
 
   }
@@ -107,55 +107,15 @@ export class AgentesPage {
   }
 
 
-  paginarEventos(infinite) {
-    if (!infinite) {
-      this.carregandoEventos = true;
-    }
-    const paginaEventos = infinite ? infinite.paginaEventos : 1;
-    this.obterProximosEventos(paginaEventos)
-      .pipe(finalize(() => this.carregandoEventos = false))
-      .subscribe(result => {
-        this.proximosEventos = result;
-        this.eventosCarregados = true;
-        if (infinite && infinite.infiniteScroll) {
-          infinite.infiniteScroll.complete();
-        }
-      })
-  }
-
   obterProximosEventos(paginaEventos) {
 
     return this.eventoService.obterProximos(QTD_EVENTOS_POR_VEZ * paginaEventos);
   }
 
-  detalhe(evento) {
-    this.navCtrl.push(DetalheEventoPage, { evento: evento, exibirLinkCompra: true });
+  avaliacao(agente) {
+    this.navCtrl.push(AgenteAvaliacaoPage, { agente: agente });
 
   }
-
-  detalheProjeto(projeto) {
-    this.navCtrl.push(DetalheEventoPage, { evento: null, exibirLinkCompra: true });
-  }
-
-  doRefresh($event) {
-
-    const eventos = this.obterProximosEventos(1);
-    const pontuacoes = this.pontuacaoService.get();
-
-    Observable.forkJoin([eventos, pontuacoes]).subscribe(result => {
-
-      this.proximosEventos = result[0];
-      this.pontuacao = result[1];
-      this.eventosCarregados = true;
-      $event.complete();
-    });
-  }
-
-  nivelModal() {
-    const modal = this.modalCtrl.create(NivelPage);
-    modal.present();
-  }
-
 
   perfilModal() {
     this.navCtrl.push(PerfilPage);
@@ -163,22 +123,4 @@ export class AgentesPage {
     // modal.present();
   }
 
-  contemEventos(): boolean {
-
-    return this.proximosEventos && this.proximosEventos.length > 0;
-  }
-
-  contemCompetencias(): boolean {
-
-    return this.competencias && this.competencias.length > 0;
-  }
-
-  contemMetodologias(): boolean {
-
-    return this.metodologias && this.metodologias.length > 0;
-  }
-
-  contemProjetos(): boolean {
-    return this.projetos && this.projetos.length > 0;
-  }
 }
