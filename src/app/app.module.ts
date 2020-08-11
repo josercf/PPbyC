@@ -28,6 +28,7 @@ import { PerfilVisualizarPageModule } from "../pages/perfil-visualizar/perfil-vi
 import { ParametrosPageModule } from '../pages/parametros/parametros.module';
 import { AbordagensPageModule } from '../pages/abordagens/abordagens.module';
 import { AgentesPageModule } from '../pages/agentes/agentes.module';
+import { ProjetoCadastroPageModule } from '../pages/projeto-cadastro/projeto-cadastro.module';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AgentesPageModule } from '../pages/agentes/agentes.module';
     ParametrosPageModule,
     AbordagensPageModule,
     AgentesPageModule,
+    ProjetoCadastroPageModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       iconMode: 'md',

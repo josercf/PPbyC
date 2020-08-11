@@ -10,16 +10,16 @@
     <h2 class="snn-cadastro-title">Cria uma conta agora</h2>
     <form [formGroup]="user">
 
-        <ion-input class="snn-login-input" placeholder="Seu nome completo" formControlName="nome" type="text" value=""></ion-input>
+        <ion-input class="snn-input" placeholder="Seu nome completo" formControlName="nome" type="text" value=""></ion-input>
 
         <display-validation [form]="user" [messages]="validation_messages" field="nome"></display-validation>
-        <ion-input class="snn-login-input" placeholder="Seu e-mail" formControlName="email" type="text" value=""></ion-input>
+        <ion-input class="snn-input" placeholder="Seu e-mail" formControlName="email" type="text" value=""></ion-input>
 
         <display-validation [form]="user" [messages]="validation_messages" field="email"></display-validation>
-        <ion-input class="snn-login-input" placeholder="Insira uma senha" maxlength="10" formControlName="password" type="password"></ion-input>
+        <ion-input class="snn-input" placeholder="Insira uma senha" maxlength="10" formControlName="password" type="password"></ion-input>
 
         <display-validation [form]="user" [messages]="validation_messages" field="password"></display-validation>
-        <ion-input class="snn-login-input" placeholder="Confirme sua senha" maxlength="10" formControlName="confirmPassword" type="password"></ion-input>
+        <ion-input class="snn-input" placeholder="Confirme sua senha" maxlength="10" formControlName="confirmPassword" type="password"></ion-input>
 
         <display-validation [form]="user" [messages]="validation_messages" field="confirmPassword"></display-validation>
         <button [disabled]="!user.valid" class="snn-login-cadastro-button" (click)="cadastrar()">Cadastrar</button>

@@ -24,9 +24,9 @@
             <display-validation [form]="user" [messages]="validation_messages" field="password"></display-validation>
         </div>
 
-        <ion-input class="snn-login-input" placeholder="Insira seu e-mail" type="text" value="" formControlName="email"></ion-input>
+        <ion-input class="snn-input" placeholder="Insira seu e-mail" type="text" value="" formControlName="email"></ion-input>
 
-        <ion-input class="snn-login-input" placeholder="Senha" maxlength="10" type="password" formControlName="password"></ion-input>
+        <ion-input class="snn-input" placeholder="Senha" maxlength="10" type="password" formControlName="password"></ion-input>
 
         <div class="snn-login-entrar" color="primary" >
             <button [disabled]="!user.valid" class="snn-login-entrar-button" (click)="login();">Entrar</button>

@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title left>
+            Novo Projeto
+        </ion-title>
+
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form [formGroup]="projeto">
+
+        <ion-input class="snn-input" placeholder="Nome" formControlName="nome" type="text" value="">
+        </ion-input>
+
+        <display-validation [form]="projeto" [messages]="validation_messages" field="sobre"></display-validation>
+        <ion-textarea class="snn-input" placeholder="Sobre" formControlName="sobre">
+        </ion-textarea>
+
+        <display-validation [form]="projeto" [messages]="validation_messages" field="metodologia"></display-validation>
+        <ion-select class="snn-select" formControlName="metodologia" interface="action-sheet" placeholder="Metodologia">
+            <ion-option value="nes">Preditivo</ion-option>
+            <ion-option value="n64">Agil</ion-option>
+            <ion-option value="ps">Híbrido</ion-option>
+        </ion-select>
+    </form>
+
+
+
+    <ion-label>Prioridade {{prioridade}}</ion-label>
+    <ion-range class="snn-input" min="1" max="100" step="1" [(ngModel)]="prioridade">
+    </ion-range>
+
+
+    <ion-fab right bottom>
+        <button ion-fab color="primary" (click)="gravar()">
+            <ion-icon name="checkmark"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

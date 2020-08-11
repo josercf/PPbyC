@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, IonicPage } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { EventoService, AuthService } from "../../core/services";
-import { DetalheEventoPage } from  "../eventos/detalhe/detalhe-evento";
+import { DetalheEventoPage } from "../eventos/detalhe/detalhe-evento";
 import { NivelPage } from "../eventos/nivel/nivel";
 import { Observable } from 'rxjs/Observable';
 import { RefreshService } from "../../core/services/refresh-service";
@@ -17,6 +17,7 @@ import { Metodologia } from '../../core/models/metodologia';
 import { Projeto } from '../../core/models/projeto';
 import { ProjetoService } from '../../core/services/projeto.service';
 import { NovoProjetoPage } from './projeto/novo-projeto';
+import { ProjetoCadastroPage } from '../projeto-cadastro/projeto-cadastro';
 
 const QTD_EVENTOS_POR_VEZ = 10;
 
@@ -45,7 +46,7 @@ export class ParametrosPage {
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
-    public eventoService: EventoService,    
+    public eventoService: EventoService,
     public pontuacaoService: PontuacaoService,
     public refreshService: RefreshService,
     private authService: AuthService,
@@ -57,8 +58,8 @@ export class ParametrosPage {
 
   ionViewDidLoad() {
 
-  
-  
+
+
     this.carregarCompetencias();
     this.carregarMetodologias();
     this.carregarProjetos();
@@ -69,46 +70,50 @@ export class ParametrosPage {
       }
     });
   }
- 
 
-  carregarCompetencias(){
 
-     this.competenciaService.listar()
-    .pipe(finalize(() =>  this.carregandoCompetencias = false))
-    .subscribe(competencias => this.competencias = competencias)
+  carregarCompetencias() {
+
+    this.competenciaService.listar()
+      .pipe(finalize(() => this.carregandoCompetencias = false))
+      .subscribe(competencias => this.competencias = competencias)
   }
 
-  carregarMetodologias(){
+  carregarMetodologias() {
     this.metodologiaService.listar()
-    .pipe(finalize(() =>  this.carregandoMetodologias = false))
-    .subscribe(metodologias => this.metodologias = metodologias)
+      .pipe(finalize(() => this.carregandoMetodologias = false))
+      .subscribe(metodologias => this.metodologias = metodologias)
   }
 
-  carregarProjetos(){
+  carregarProjetos() {
     this.projetoService.listar()
-    .pipe(finalize(() =>  this.carregandoProjetos = false))
-    .subscribe(projetos => this.projetos = projetos)
+      .pipe(finalize(() => this.carregandoProjetos = false))
+      .subscribe(projetos => this.projetos = projetos)
   }
- 
 
- 
+
+
 
   detalhe(evento) {
     this.navCtrl.push(DetalheEventoPage, { evento: evento, exibirLinkCompra: true });
 
   }
 
-  detalheProjeto(projeto){
+  detalheProjeto(projeto) {
     this.navCtrl.push(DetalheEventoPage, { evento: null, exibirLinkCompra: true });
   }
 
-  
+
   perfilModal() {
     this.navCtrl.push(PerfilPage);
     // const modal = this.modalCtrl.create(PerfilPage);
     // modal.present();
   }
- 
+
+  adicionarProjeto() {
+    this.navCtrl.push(ProjetoCadastroPage);
+  }
+
   contemCompetencias(): boolean {
 
     return this.competencias && this.competencias.length > 0;
