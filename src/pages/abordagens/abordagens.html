@@ -9,48 +9,37 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-navbar> 
+  </ion-navbar>
 
 </ion-header>
-<ion-content id="proximos-eventos-content">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  <ion-item-divider sticky id="proximos-eventos-divider">
-    <ion-title left>
-      Avaliar Abordagens
-    </ion-title>
-  </ion-item-divider>
-  <display-spinner [display]="carregandoEventos"></display-spinner>
+<ion-content padding-button>
 
-  <div [ngSwitch]="opcao">
-    <ion-list *ngSwitchCase="'competencias'">
-      <ion-item *ngFor="let item of competencias">
-        <ion-icon name="infinite" item-left> </ion-icon>
-        <h2>{{item.Sigla}} - {{item.Descricao}}</h2>
-      </ion-item>
-    </ion-list>
+  <ion-item>
+    <ion-label>Abordagem</ion-label>
+    <ion-select [(ngModel)]="gender" interface="action-sheet">
+      <ion-option [value]="metodo.Id" *ngFor="let metodo of metodologias">{{metodo.Descricao}}</ion-option>
+    </ion-select>
+  </ion-item>
 
-    <ion-list *ngSwitchCase="'abordagens'">
-      <ion-item *ngFor="let item of metodologias">
-        <ion-icon name="infinite" item-left> </ion-icon>
-        <h2>{{item.Descricao}}</h2>
-      </ion-item>
-    </ion-list>
-
-    <ion-list *ngSwitchCase="'projetos'">
-      <span *ngIf="!contemProjetos() && eventosCarregados" class="text-info" ion-text color="primary">Os projetos cadastrados serão exibidos aqui.</span>
-      <ion-item *ngFor="let item of projetos">
-        <ion-icon name="folder"  item-left></ion-icon>
-        <h2>{{item.Nome}}</h2>
+  <ion-card *ngFor="let item of competencias">
+    <ion-card-header>
+      <h2 ion-text text-wrap color="primary">{{item.Nome}}</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <p ion-text text-wrap>{{item.Descricao}}</p>
+      <ion-item>
+        <ion-label>Avaliação</ion-label>
+        <ion-select [(ngModel)]="gender" interface="action-sheet">
+          <ion-option [value]="variavel.Id" *ngFor="let variavel of variaveis"> {{variavel.Nome}}</ion-option>
+        </ion-select>
       </ion-item>
 
-      <ion-item >
-        <button (click)="detalheProjeto()" full ion-button round color="primary">Novo Projeto</button>
-      </ion-item>
-    </ion-list>
-  </div>
+    </ion-card-content>
+  </ion-card>
 
-  <span *ngIf="!contemCompetencias() && !contemMetodologias() && eventosCarregados" class="text-info" ion-text color="primary">Os dados serão exibidos aqui assim que atualizarmos os cadastros.</span>
-
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="registrar()">
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
