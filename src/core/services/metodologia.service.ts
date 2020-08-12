@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { WebRequestService } from "./web-request.service";
 import { Competencia } from '../models/competencia';
 import { Metodologia } from '../models/metodologia';
+import { MetodologiaAvaliacao } from '../models/metodologia-avaliacao';
 const metodologias_url = 'mobile/api/v1/metodologia/';
 @Injectable()
 export class MetodologiaService {
@@ -22,9 +23,16 @@ export class MetodologiaService {
             .pipe(map(response => response.data));
     }
 
-   getById(id): Observable<Metodologia> {
+    getById(id): Observable<Metodologia> {
 
         return this.webRequest.get(`${metodologias_url}/GetById/${id}`, {}, { ajaxLoading: false })
             .pipe(map(response => response.data));
+    }
+
+    avaliar(avaliaco: MetodologiaAvaliacao[]) {
+
+        return this.webRequest.post(`${metodologias_url}/avaliar`, avaliaco, {}, { ajaxLoading: true })
+            .pipe(map(response => response));
+
     }
 }

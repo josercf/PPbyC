@@ -18,6 +18,7 @@ import { Projeto } from '../../core/models/projeto';
 import { ProjetoService } from '../../core/services/projeto.service';
 import { Variavel } from '../../core/models/Variavel';
 import { VariavelService } from '../../core/services/variavel.service';
+import { MetodologiaAvaliacao } from '../../core/models/metodologia-avaliacao';
 
 const QTD_EVENTOS_POR_VEZ = 10;
 
@@ -42,6 +43,8 @@ export class AbordagensPage {
   metodologias: Metodologia[];
   projetos: Projeto[];
   variaveis: Variavel[];
+  avaliacao: MetodologiaAvaliacao[] = [];
+  abordagem: string;
 
 
   constructor(
@@ -83,7 +86,12 @@ export class AbordagensPage {
   carregarCompetencias() {
     this.competenciaService.listar()
       .pipe(finalize(() => this.carregandoPontuacao = false))
-      .subscribe(competencias => this.competencias = competencias)
+      .subscribe(competencias => {
+        this.competencias = competencias;
+        this.avaliacao = this.competencias.map(c => {
+          return { IdUsuario: this.jwt.sid, IdCompetencia: c.Id }
+        });
+      })
   }
 
   carregarMetodologias() {
@@ -103,5 +111,33 @@ export class AbordagensPage {
     this.navCtrl.push(PerfilPage);
     // const modal = this.modalCtrl.create(PerfilPage);
     // modal.present();
+  }
+
+  permitirGravar() {
+
+    if (this.abordagem && this.avaliacao && this.avaliacao.filter(c => !c.IdPeso).length == 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  registrar() {
+
+    this.avaliacao = this.avaliacao.map(c => {
+
+      return Object.assign({ IdAbordagem: this.abordagem }, c);
+    });
+
+    this.metodologiaService.avaliar(this.avaliacao).subscribe(response => {
+
+      this.abordagem = "";
+      this.avaliacao = this.avaliacao.map(c => {
+        return Object.assign({ IdAbordagem: "", IdPseso: undefined }, c);
+      });
+
+    });
+
+
   }
 }

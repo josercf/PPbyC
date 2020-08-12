@@ -54,6 +54,22 @@
   color:#444;
 }
 
+ 
+
+.snn-select .label{
+  text-align: left;
+  padding-left: 20px;
+}
+
+.snn-select .item-inner{
+  border-bottom: none!important;
+}
+
+.snn-select.small{
+  padding: 0;
+
+}
+
 form .item-md {padding: 0;}
 form .item-md.item-block .item-inner {
   padding-right: 0!important;
@@ -169,7 +185,7 @@ page-home ion-content {
      -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;}
-
+.header::after {background-image: none!important; }
 [header-avatar]{font-size: 45px;}
 
 [avatar]{font-size: 50px; margin: 0;}

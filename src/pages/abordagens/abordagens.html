@@ -2,43 +2,52 @@
   <ion-navbar>
     <ion-grid class="BBbyC-header">
       <ion-row>
-        <ion-col col-12>
-          <div class="BBbyC-home-logo">
+        <ion-col col-4 no-padding></ion-col>
+        <ion-col col-4 no-padding>
+          <ion-item class="BBbyC-home-logo">
             <img responsive alt="logo" height="20" src="assets/imgs/logo.png">
-          </div>
+          </ion-item>
+        </ion-col>
+        <ion-col col-4 no-padding>
+          <ion-item class="BBbyC-profile" (click)="perfilModal()">
+            <ion-avatar item-end>
+              <ion-icon *ngIf="!jwt?.userPicture" name="contact" color="light" header-avatar class="avatar"></ion-icon>
+              <img *ngIf="jwt?.userPicture" [src]="jwt?.userPicture">
+            </ion-avatar>
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-navbar>
-
 </ion-header>
 <ion-content bottom-space>
-
-  <ion-item>
-    <ion-label>Abordagem</ion-label>
-    <ion-select [(ngModel)]="gender" interface="action-sheet">
-      <ion-option [value]="metodo.Id" *ngFor="let metodo of metodologias">{{metodo.Descricao}}</ion-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-card *ngFor="let item of competencias">
+  <div padding>
+    <ion-item class="snn-select small">
+      <ion-label>Abordagem</ion-label>
+      <ion-select [(ngModel)]="abordagem" interface="action-sheet">
+        <ion-option [value]="metodo.Id" *ngFor="let metodo of metodologias">{{metodo.Descricao}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <ion-card *ngFor="let item of competencias; let i = index">
     <ion-card-header>
       <h2 ion-text text-wrap color="primary">{{item.Nome}}</h2>
     </ion-card-header>
     <ion-card-content>
-      <p ion-text text-wrap>{{item.Descricao}}</p>
-      <ion-item>
+      <p margin-bottom ion-text text-wrap>{{item.Descricao}}</p>
+      <ion-item class="snn-select small">
         <ion-label>Avaliação</ion-label>
-        <ion-select [(ngModel)]="gender" interface="action-sheet">
+        <ion-select [(ngModel)]="avaliacao[i].IdPeso" [id]="item.Id" interface="action-sheet">
           <ion-option [value]="variavel.Id" *ngFor="let variavel of variaveis"> {{variavel.Nome}}</ion-option>
         </ion-select>
       </ion-item>
-
     </ion-card-content>
   </ion-card>
+  <ion-item margin-bottom no-lines>
 
+  </ion-item>
   <ion-fab right bottom>
-    <button ion-fab color="primary" (click)="registrar()">
+    <button [disabled]="!permitirGravar()" ion-fab color="primary" (click)="registrar()">
       <ion-icon name="checkmark"></ion-icon>
     </button>
   </ion-fab>

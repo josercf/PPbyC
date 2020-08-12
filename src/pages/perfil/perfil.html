@@ -4,9 +4,6 @@
 
         </ion-title>
         <ion-buttons right>
-            <button id="btn-editar-perfil" ion-button icon-only (click)="editar()">
-                <ion-icon name="create"></ion-icon>
-            </button>
             <button ion-button icon-only (click)="presentActionSheet()">
                 <ion-icon name="power"></ion-icon>
             </button>
@@ -38,95 +35,5 @@
                 </ion-row>
             </ion-grid>
         </ion-item-divider>
-        <ion-grid>
-            <!-- <ion-row>
-                <ion-col col-6>
-                    <div class="item-menu-box gradient-1">
-
-                        <div (click)="resgatarPontuacao()" class="item-menu-box-icon">
-                            <ion-icon name="person" class="ion-icon-profile color-1"></ion-icon>
-                        </div>
-
-                        <div class="item-menu-box-text">
-                            Resgatar pontos
-                        </div>
-
-                    </div>
-                </ion-col>
-
-                <ion-col col-6>
-
-                    <div class="item-menu-box gradient-2">
-
-                        <div (click)="exibirContatos()" class="item-menu-box-icon">
-                            <ion-icon name="star" class="ion-icon-profile color-2"></ion-icon>
-                        </div>
-
-                        <div class="item-menu-box-text">
-                            Meus prêmios
-                        </div>
-
-                    </div>
-                </ion-col>
-            </ion-row> -->
-            <ion-row>
-
-                <ion-col col-6>
-                    <div (click)="resgatarPontuacao()" class="item-menu-box gradient-2">
-
-                        <div class="item-menu-box-icon">
-                            <ion-icon name="star" class="ion-icon-profile color-2"></ion-icon>
-                        </div>
-
-                        <div class="item-menu-box-text">
-                            Resgatar pontos
-                        </div>
-
-                    </div>
-                </ion-col>
-                <ion-col col-6>
-                    <div (click)="exibirContatos()" class="item-menu-box gradient-3">
-
-                        <div class="item-menu-box-icon">
-                            <ion-icon name="contacts" class="ion-icon-profile color-3"></ion-icon>
-                        </div>
-
-                        <div class="item-menu-box-text">
-                            Contatos
-                        </div>
-
-                    </div>
-                </ion-col>
-
-            </ion-row>
-            <ion-row>
-                <ion-col col-6>
-                    <div (click)="exibirPremios()" class="item-menu-box gradient-3">
-
-                        <div class="item-menu-box-icon">
-                            <ion-icon name="ribbon" class="ion-icon-profile color-3"></ion-icon>
-                        </div>
-
-                        <div class="item-menu-box-text">
-                            Prêmios
-                        </div>
-
-                    </div>
-                </ion-col>
-                <ion-col col-6>
-                    <div (click)="exibirFornecedores()" class="item-menu-box gradient-2">
-
-                        <div class="item-menu-box-icon">
-                            <ion-icon name="heart" class="ion-icon-profile color-2"></ion-icon>
-                        </div>
-
-                        <div class="item-menu-box-text">
-                            Patrocínio
-                        </div>
-
-                    </div>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
     </ion-list>
 </ion-content>

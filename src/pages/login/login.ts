@@ -49,7 +49,7 @@ export class LoginPage {
     cadastro() {
 
         this.navCtrl.push(CadastroPage);
-      }
+    }
 
 
 
@@ -88,28 +88,27 @@ export class LoginPage {
     }
 
     login() {
-        this.navCtrl.push(TabsPage);
-        // return;
-        // const login = new User(this.user.controls.email.value, this.user.controls.password.value);
 
-        // this.authService.login(login).subscribe(result => {
-        //     if (result.Authenticated) {
-        //         this.navCtrl.push(TabsPage);
-        //     }
-        //     else {
-        //         let message = "Não foi possível realizar o login";
+        const login = new User(this.user.controls.email.value, this.user.controls.password.value);
 
-        //         if (result.Message) {
-        //             message = result.Message;
-        //         }
-        //         let alert = this.alertCtrl.create({
-        //             title: "BBbyC",
-        //             message: message,
-        //             buttons: ['OK']
-        //         });
-        //         alert.present();
-        //     }
-        // });
+        this.authService.login(login).subscribe(result => {
+            if (result.Authenticated) {
+                this.navCtrl.push(TabsPage);
+            }
+            else {
+                let message = "Não foi possível realizar o login";
+
+                if (result.Message) {
+                    message = result.Message;
+                }
+                let alert = this.alertCtrl.create({
+                    title: "BBbyC",
+                    message: message,
+                    buttons: ['OK']
+                });
+                alert.present();
+            }
+        });
 
     }
 

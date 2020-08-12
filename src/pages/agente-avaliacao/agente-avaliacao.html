@@ -1,7 +1,7 @@
-<ion-header>
+<ion-header id="app-header">
     <ion-navbar>
         <ion-title left>
-           Avaliar Agente
+            Avaliar Agente
         </ion-title>
 
     </ion-navbar>
@@ -37,17 +37,19 @@
             <h2 ion-text text-wrap color="primary">{{item.Nome}}</h2>
         </ion-card-header>
         <ion-card-content>
-            <p ion-text text-wrap>{{item.Descricao}}</p>
-            <ion-item>
+            <p margin-bottom ion-text text-wrap>{{item.Descricao}}</p>
+            <ion-item class="snn-select small">
                 <ion-label>Avaliação</ion-label>
-                <ion-select [(ngModel)]="gender" interface="action-sheet">
+                <ion-select [id]="item.Id" interface="action-sheet">
                     <ion-option [value]="variavel.Id" *ngFor="let variavel of variaveis"> {{variavel.Nome}}</ion-option>
                 </ion-select>
             </ion-item>
 
         </ion-card-content>
     </ion-card>
+    <ion-item margin-bottom no-lines>
 
+    </ion-item>
     <ion-fab right bottom>
         <button ion-fab color="primary" (click)="registrar()">
             <ion-icon name="checkmark"></ion-icon>
