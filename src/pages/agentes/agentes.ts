@@ -17,6 +17,8 @@ import { Metodologia } from '../../core/models/metodologia';
 import { Projeto } from '../../core/models/projeto';
 import { ProjetoService } from '../../core/services/projeto.service';
 import { AgenteAvaliacaoPage } from '../agente-avaliacao/agente-avaliacao';
+import { AgenteService } from '../../core/services/agente.service';
+import { Agente } from '../../core/models/agente';
 
 const QTD_EVENTOS_POR_VEZ = 10;
 
@@ -31,43 +33,39 @@ export class AgentesPage {
   opcao: string = "competencias";
 
   proximosEventos: Evento[];
-  eventosCarregados: boolean;
-  pontuacao: number = 0;
-  carregandoEventos: boolean;
+
+  carregandoCompetencias: boolean;
+  carregandoAgentes: boolean;
   carregandoPontuacao: boolean;
   jwt: any;
 
   competencias: Competencia[];
   metodologias: Metodologia[];
   projetos: Projeto[];
-  agentes: any[] = [];
+  agentes: Agente[] = [];
 
 
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
-    public eventoService: EventoService,
-    public pontuacaoService: PontuacaoService,
     public refreshService: RefreshService,
     private authService: AuthService,
     public competenciaService: CompetenciaService,
     public metodologiaService: MetodologiaService,
-    public projetoService: ProjetoService) {
+    public projetoService: ProjetoService,
+    public agenteService: AgenteService) {
 
   }
 
   ionViewDidLoad() {
 
-    this.carregarPontuacoes();
 
     this.carregarCompetencias();
     this.carregarMetodologias();
     this.carregarProjetos();
+    this.carregarAgentes();
 
-    this.refreshService.ranking()
-      .subscribe(c => {
-        this.carregarPontuacoes();
-      });
+
 
     this.authService.getIdentity().then(identity => {
       if (identity.AccessToken) {
@@ -80,17 +78,17 @@ export class AgentesPage {
     }
 
   }
-  carregarPontuacoes() {
-    this.carregandoPontuacao = true;
-    this.pontuacaoService.get()
-      .pipe(finalize(() => this.carregandoPontuacao = false))
-      .subscribe(pontuacao => this.pontuacao = pontuacao);
+
+  carregarAgentes() {
+    this.agenteService.listar()
+      .pipe(finalize(() => this.carregandoAgentes = false))
+      .subscribe(agentes => this.agentes = agentes);
   }
 
 
   carregarCompetencias() {
     this.competenciaService.listar()
-      .pipe(finalize(() => this.carregandoPontuacao = false))
+      .pipe(finalize(() => this.carregandoCompetencias = false))
       .subscribe(competencias => this.competencias = competencias)
   }
 
@@ -107,10 +105,6 @@ export class AgentesPage {
   }
 
 
-  obterProximosEventos(paginaEventos) {
-
-    return this.eventoService.obterProximos(QTD_EVENTOS_POR_VEZ * paginaEventos);
-  }
 
   avaliacao(agente) {
     this.navCtrl.push(AgenteAvaliacaoPage, { agente: agente });

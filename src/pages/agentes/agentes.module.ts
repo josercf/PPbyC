@@ -9,6 +9,7 @@ import { CompetenciaService } from '../../core/services/competencia.service';
 import { MetodologiaService } from '../../core/services/metodologia.service';
 import { ProjetoService } from '../../core/services/projeto.service';
 import { AgentesPage } from './agentes';
+import { AgenteService } from '../../core/services/agente.service';
 
 @NgModule({
   declarations: [
@@ -24,11 +25,10 @@ import { AgentesPage } from './agentes';
   ],
   entryComponents: [],
     providers: [
-      EventoService, 
-      PontuacaoService, 
       CompetenciaService, 
       MetodologiaService,
-      ProjetoService]
+      ProjetoService,
+      AgenteService]
 
 })
 export class AgentesPageModule { }

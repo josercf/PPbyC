@@ -22,19 +22,20 @@
 
 </ion-header>
 <ion-content bottom-space>
+  <display-spinner [display]="carregandoCompetencias && carregandoAgentes && carregandoPontuacao"></display-spinner>
   <ion-list>
     <ion-item>
       <ion-grid>
         <ion-row *ngFor="let agente of agentes" (click)="avaliacao(agente)">
           <ion-col col-2>
             <ion-avatar item-left>
-              <img
-                src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+              <ion-icon *ngIf="!agente.PathImagem" name="contact" color="light" header-avatar class="avatar"></ion-icon>
+              <img *ngIf="agente.PathImagem" [src]="agente.PathImagem">
             </ion-avatar>
           </ion-col>
           <ion-col col-8>
             <ion-row>
-              <ion-col text-wrap>{{agente.Nome}}</ion-col>
+              <ion-col text-wrap>{{agente.Nome}}<br><small>{{agente.Cargo}}</small></ion-col>
             </ion-row>
           </ion-col>
           <ion-col col-2>
