@@ -22,9 +22,14 @@ export class CompetenciaService {
     }
 
 
-   getById(id): Observable<Competencia> {
+    getById(id): Observable<Competencia> {
 
         return this.webRequest.get(`${competencias_url}/GetById/${id}`, {}, { ajaxLoading: false })
+            .pipe(map(response => response.data));
+    }
+
+    consultarAvaliacao(idUsuario: string, idAbordagem: string) {
+        return this.webRequest.get(`${competencias_url}/Detalhe?idUsuario=${idUsuario}&idAbordagem=${idAbordagem}`, {}, { ajaxLoading: false })
             .pipe(map(response => response.data));
     }
 

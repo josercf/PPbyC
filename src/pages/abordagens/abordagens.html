@@ -24,7 +24,7 @@
   <div padding>
     <ion-item class="snn-select small">
       <ion-label>Abordagem</ion-label>
-      <ion-select [(ngModel)]="abordagem" interface="action-sheet">
+      <ion-select [(ngModel)]="abordagem" interface="action-sheet" (ionChange)="consultarAvaliacao()">
         <ion-option [value]="metodo.Id" *ngFor="let metodo of metodologias">{{metodo.Descricao}}</ion-option>
       </ion-select>
     </ion-item>

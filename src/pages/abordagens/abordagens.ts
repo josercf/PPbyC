@@ -37,6 +37,7 @@ export class AbordagensPage {
   pontuacao: number = 0;
   carregandoEventos: boolean;
   carregandoPontuacao: boolean;
+  editando: boolean;
   jwt: any;
 
   competencias: Competencia[];
@@ -88,10 +89,17 @@ export class AbordagensPage {
       .pipe(finalize(() => this.carregandoPontuacao = false))
       .subscribe(competencias => {
         this.competencias = competencias;
-        this.avaliacao = this.competencias.map(c => {
-          return { IdUsuario: this.jwt.sid, IdCompetencia: c.Id }
-        });
+        this.limparFormularioAvaliacao();
       })
+  }
+
+  limparFormularioAvaliacao() {
+
+    this.avaliacao = this.competencias.map(c => {
+      return { IdUsuario: this.jwt.sid, IdCompetencia: c.Id, IdPeso: 0 }
+    });
+
+
   }
 
   carregarMetodologias() {
@@ -115,7 +123,7 @@ export class AbordagensPage {
 
   permitirGravar() {
 
-    if (this.abordagem && this.avaliacao && this.avaliacao.filter(c => !c.IdPeso).length == 0) {
+    if (!this.editando && this.abordagem && this.avaliacao && this.avaliacao.filter(c => !c.IdPeso).length == 0) {
       return true;
     }
 
@@ -133,11 +141,25 @@ export class AbordagensPage {
 
       this.abordagem = "";
       this.avaliacao = this.avaliacao.map(c => {
-        return Object.assign({ IdAbordagem: "", IdPseso: undefined }, c);
+        return Object.assign({ IdAbordagem: "", IdPseso: -1 }, c);
       });
 
     });
 
 
+  }
+
+  consultarAvaliacao() {
+    this.editando = false;
+    this.limparFormularioAvaliacao();
+
+    if (this.abordagem) {
+      this.competenciaService.consultarAvaliacao(this.jwt.sid, this.abordagem).subscribe(response => {
+        if (response && response.length > 0) {
+          this.avaliacao = response;
+          this.editando = true;
+        }
+      });
+    }
   }
 }
