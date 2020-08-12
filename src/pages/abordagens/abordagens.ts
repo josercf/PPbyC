@@ -140,9 +140,8 @@ export class AbordagensPage {
     this.metodologiaService.avaliar(this.avaliacao).subscribe(response => {
 
       this.abordagem = "";
-      this.avaliacao = this.avaliacao.map(c => {
-        return Object.assign({ IdAbordagem: "", IdPseso: -1 }, c);
-      });
+      this.limparFormularioAvaliacao();
+
 
     });
 

@@ -13,9 +13,9 @@
                 <ion-row>
                     <ion-col col-2>
                         <ion-avatar item-left>
-                            <ion-icon *ngIf="!jwt?.userPicture" name="contact" profile-avatar color="light"
+                            <ion-icon *ngIf="!agente?.PathImagem" name="contact" profile-avatar color="light"
                                 class="avatar"></ion-icon>
-                            <img *ngIf="jwt?.userPicture" [src]="jwt?.userPicture">
+                            <img *ngIf="agente?.PathImagem" [src]="agente?.PathImagem">
                         </ion-avatar>
                     </ion-col>
                     <ion-col col-10>
@@ -32,7 +32,15 @@
             </ion-grid>
         </ion-item-divider>
     </ion-list>
-    <ion-card *ngFor="let item of competencias">
+    <div padding>
+        <ion-item class="snn-select small">
+            <ion-label>Abordagem</ion-label>
+            <ion-select [(ngModel)]="abordagem" interface="action-sheet" (ionChange)="consultarAvaliacao()">
+                <ion-option [value]="metodo.Id" *ngFor="let metodo of metodologias">{{metodo.Descricao}}</ion-option>
+            </ion-select>
+        </ion-item>
+    </div>
+    <ion-card *ngFor="let item of competencias; let i = index">
         <ion-card-header>
             <h2 ion-text text-wrap color="primary">{{item.Nome}}</h2>
         </ion-card-header>
@@ -40,7 +48,7 @@
             <p margin-bottom ion-text text-wrap>{{item.Descricao}}</p>
             <ion-item class="snn-select small">
                 <ion-label>Avaliação</ion-label>
-                <ion-select [id]="item.Id" interface="action-sheet">
+                <ion-select [(ngModel)]="avaliacao[i].IdPeso" [id]="item.Id" interface="action-sheet">
                     <ion-option [value]="variavel.Id" *ngFor="let variavel of variaveis"> {{variavel.Nome}}</ion-option>
                 </ion-select>
             </ion-item>
@@ -51,7 +59,7 @@
 
     </ion-item>
     <ion-fab right bottom>
-        <button ion-fab color="primary" (click)="registrar()">
+        <button [disabled]="!permitirGravar()" ion-fab color="primary" (click)="registrar()">
             <ion-icon name="checkmark"></ion-icon>
         </button>
     </ion-fab>
