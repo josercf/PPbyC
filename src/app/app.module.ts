@@ -20,16 +20,16 @@ import { LoginPageModule } from "../pages/login/login.module";
 import { CoreModule } from "../core/core.module";
 import { NoticiasPageModule } from "../pages/noticias/lista/noticias-lista.module";
 import { DetalheEventoPageModule } from "../pages/eventos/detalhe/detalhe-evento.module";
-import { HomePageModule } from "../pages/home/home.module";
 import { NivelPagePageModule } from "../pages/eventos/nivel/nivel.module";
 import { PontuacaoPageModule } from "../pages/pontuacao/pontuacao.module";
 import { FornecedoresPageModule } from "../pages/fornecedores/fornecedores.module";
-import { PerfilVisualizarPageModule } from "../pages/perfil-visualizar/perfil-visualziar.module";
 import { ParametrosPageModule } from '../pages/parametros/parametros.module';
 import { AbordagensPageModule } from '../pages/abordagens/abordagens.module';
 import { AgentesPageModule } from '../pages/agentes/agentes.module';
 import { ProjetoCadastroPageModule } from '../pages/projeto-cadastro/projeto-cadastro.module';
 import { AgenteAvaliacaoPageModule } from '../pages/agente-avaliacao/agente-avaliacao.module';
+import { AlocacaoPageModule } from '../pages/alocacao/alocacao.module';
+import { AgenteAlocacaoPageModule } from '../pages/agente-alocacao/agente-alocacao.module';
 
 @NgModule({
   declarations: [
@@ -58,6 +58,8 @@ import { AgenteAvaliacaoPageModule } from '../pages/agente-avaliacao/agente-aval
     AgentesPageModule,
     ProjetoCadastroPageModule,
     AgenteAvaliacaoPageModule,
+    AlocacaoPageModule,
+    AgenteAlocacaoPageModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       iconMode: 'md',

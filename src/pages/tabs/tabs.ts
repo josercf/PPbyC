@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ParametrosPage } from '../parametros/parametros';
 import { AbordagensPage } from '../abordagens/abordagens';
 import { AgentesPage } from '../agentes/agentes';
+import { AlocacaoPage } from '../alocacao/alocacao';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ export class TabsPage {
   tabCadastro = ParametrosPage
   tabAbordagens = AbordagensPage
   tabAgentes = AgentesPage
-  //tabAlocar = AlocarPage
+  tabAlocar = AlocacaoPage
 
   constructor() { }
 

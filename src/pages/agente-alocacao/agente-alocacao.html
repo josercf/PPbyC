@@ -1,0 +1,67 @@
+<ion-header id="app-header">
+    <ion-navbar>
+        <ion-title left>
+            Alocar Agente
+        </ion-title>
+
+    </ion-navbar>
+</ion-header>
+<ion-content bottom-space>
+    <ion-list>
+        <ion-item-divider sticky>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-2>
+                        <ion-avatar item-left>
+                            <ion-icon *ngIf="!agente?.PathImagem" name="contact" profile-avatar color="light"
+                                class="avatar"></ion-icon>
+                            <img *ngIf="agente?.PathImagem" [src]="agente?.PathImagem">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col col-10>
+                        <ion-row>
+                            <ion-col>
+                                <strong class="profile-name" ion-text text-wrap color="dark">{{agente?.Nome}}</strong>
+                                <br>
+                                <small>{{agente?.Cargo}}</small>
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item-divider>
+    </ion-list>
+    <div padding>
+        <ion-item class="snn-select small">
+            <ion-label>Abordagem</ion-label>
+            <ion-select [(ngModel)]="abordagem" interface="action-sheet" (ionChange)="consultarAvaliacao()">
+                <ion-option [value]="metodo.Id" *ngFor="let metodo of metodologias">{{metodo.Descricao}}</ion-option>
+            </ion-select>
+        </ion-item>
+    </div>
+    <ion-list>
+        <ion-item>
+            <ion-grid>
+                <ion-row *ngFor="let item of avaliacao">
+                    <ion-col col-4>
+                        <small ion-text text-wrap color="title-text">{{item.Competencia}}</small>
+                    </ion-col>
+                    <ion-col col-6>
+                        <small ion-text text-right>{{item.Nota}}</small>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-icon float-right name="analytics" color="light"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item margin-bottom no-lines></ion-item>
+    </ion-list>
+
+    <ion-fab right bottom>
+        <button [disabled]="!permitirGravar()" ion-fab color="primary" (click)="registrar()">
+            <ion-icon name="checkmark"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

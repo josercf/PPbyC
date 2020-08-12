@@ -39,4 +39,9 @@ export class AgenteService {
             .pipe(map(response => response.data));
     }
 
+    consultarDetalhe(idUsuario: string, idAbordagem: string, idAgente: string) {
+        return this.webRequest.get(`${competencias_url}/Detalhe?idUsuario=${idUsuario}&idAbordagem=${idAbordagem}&idAgente=${idAgente}`, {}, { ajaxLoading: false })
+            .pipe(map(response => response.data));
+    }
+
 }
